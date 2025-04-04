@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['todobackend.onrender.com']
+ALLOWED_HOSTS = ['https://todobackend-h9se.onrender.com']
 
 
 # Application definition
