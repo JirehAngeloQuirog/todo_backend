@@ -79,12 +79,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'todobackend.wsgi.application'
 
 # Database setup: PostgreSQL on Render, fallback to SQLite locally
-DATABASE_URL = os.getenv('postgresql://quirog_todobackend_user:tI1A62gDv1g3JfZpFe7v3NZhF4wvcIK1@dpg-cvppg895pdvs73ed9bmg-a.oregon-postgres.render.com/quirog_todobackend')
+DATABASE_URL = os.getenv('DATABASE_URL')  # No fallback string here
 
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
-    }
+DATABASES = {
+    'default': dj_database_url.config(
+        default=DATABASE_URL,
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
+
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
