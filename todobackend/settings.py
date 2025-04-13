@@ -1,26 +1,25 @@
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 import dj_database_url
+
+
+load_dotenv()
+
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Secret key and debug flag
-SECRET_KEY = os.getenv('SECRET_KEY', 'JirehQuirog')  # Better to manage SECRET_KEY securely
-DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'  # Convert to boolean properly
+SECRET_KEY = os.getenv('SECRET_KEY', 'JirehQuirog')
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Allowed hosts for Render
-ALLOWED_HOSTS = [
-    'quirog-todo.onrender.com',
-    'todo_backend_quirog.onrender.com',
-    'localhost',
-    '127.0.0.1'
-]
+ALLOWED_HOSTS = ['quirog-todo.onrender.com', 'localhost', '127.0.0.1']
 
 # CORS (for GitHub Pages frontend)
 CORS_ALLOWED_ORIGINS = [
     "https://jirehangeloquirog.github.io",
-    'http://localhost:3000',
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
@@ -85,23 +84,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'todobackend.wsgi.application'
 
 # Database setup: PostgreSQL on Render, fallback to SQLite locally
-DATABASE_URL = os.getenv('DATABASE_URL', '')  # Ensure DATABASE_URL is set in the environment
+DATABASE_URL = os.getenv('DATABASE_URL')
 
-# Fallback database config if DATABASE_URL is not set
-if not DATABASE_URL:
+if DATABASE_URL:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+        'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
     }
 else:
     DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            ssl_require=True
-        )
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'quirog-todobackend',  # Replace with your DB name
+            'USER': 'quirog_todobackend_user',  # Replace with your DB username
+            'PASSWORD': 'tI1A62gDv1g3JfZpFe7v3NZhF4wvcIK1',  # Replace with your DB password
+            'HOST': 'dpg-cvppg895pdvs73ed9bmg-a',  # Replace with your DB host (e.g., localhost or Render DB host)
+            'PORT': '5432',  # Default PostgreSQL port
+        }
     }
 
 # Password validation
