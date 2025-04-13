@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'JirehQuirog')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Allowed hosts for Render
-ALLOWED_HOSTS = ['quirog-todo.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['quirog-todo.onrender.com','todo_backend_quirog.onrender.com', 'localhost', '127.0.0.1']
 
 # CORS (for GitHub Pages frontend)
 CORS_ALLOWED_ORIGINS = [
