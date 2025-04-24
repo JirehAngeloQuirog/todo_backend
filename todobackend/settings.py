@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'JirehQuirog')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Allowed hosts for Render
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
 
 # CORS (for GitHub Pages frontend)
 CORS_ALLOWED_ORIGINS = [
@@ -55,12 +55,16 @@ MIDDLEWARE = [
 # REST framework settings
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # Needed for browser login
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',  
-    ]
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
+
+
+
 
 # URL and template settings
 ROOT_URLCONF = 'todobackend.urls'
