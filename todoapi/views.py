@@ -6,7 +6,8 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 
 class TaskViewSet(viewsets.ModelViewSet):
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticated]
     
     queryset = Task.objects.all().order_by('-created_at')
     serializer_class = TaskSerializer
