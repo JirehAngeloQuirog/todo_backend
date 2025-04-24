@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'JirehQuirog')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Allowed hosts for Render
-ALLOWED_HOSTS = ['todobackend-h9se.onrender.com']
+ALLOWED_HOSTS = ['todobackend-h9se.onrender.com', '127.0.0.1', 'localhost']
 
 # CORS (for GitHub Pages frontend)
 CORS_ALLOWED_ORIGINS = [
