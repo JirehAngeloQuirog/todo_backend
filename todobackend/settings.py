@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'JirehQuirog')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 # Allowed hosts for Render
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # CORS (for GitHub Pages frontend)
 CORS_ALLOWED_ORIGINS = [
