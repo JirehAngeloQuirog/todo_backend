@@ -20,6 +20,7 @@ ALLOWED_HOSTS = ['todobackend-h9se.onrender.com', '127.0.0.1', 'localhost']
 # CORS (for GitHub Pages frontend)
 CORS_ALLOWED_ORIGINS = [
     "https://jirehangeloquirog.github.io",
+    "https://snack.expo.dev",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
