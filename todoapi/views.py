@@ -7,7 +7,7 @@ from rest_framework.authentication import TokenAuthentication, SessionAuthentica
 
 class TaskViewSet(viewsets.ModelViewSet):
     authentication_classes = [SessionAuthentication]
-    permission_classes = [IsAdminUser]
+    
     queryset = Task.objects.all().order_by('-created_at')
     serializer_class = TaskSerializer
 
